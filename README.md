@@ -71,6 +71,11 @@ kubectl get services influxdb-external-service
   ```python
   INFLUXDB_HOST = '<EXTERNAL IP>'
   ```
+- Install influxdb module
+  
+  ```bash
+  pip install influxdb
+  ```
 - Executing the two python files open two terminals in python folder
   - In the 1st terminal run
   
