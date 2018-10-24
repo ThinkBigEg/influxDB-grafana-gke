@@ -1,0 +1,58 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: influxdb-external-service
+spec:
+  selector:
+    app: influxdb-app
+  ports:
+  - port: 8086
+    protocol: TCP
+    name: api-port
+  - port: 8083
+    protocol: TCP
+    name: ui-port
+  type: LoadBalancer
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: influxdb-internal-service
+spec:
+  ports:
+  - port: 8086
+    protocol: TCP
+  selector:
+    app: influxdb-app
+  clusterIP: None
+---
+apiVersion: apps/v1beta2 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: influxdb
+spec:
+  selector:
+    matchLabels:
+      app: influxdb-app
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: influxdb-app
+    spec:
+      containers:
+      - image: library/influxdb
+        name: influxdb-container
+        ports:
+        - containerPort: 8086
+          name: api-port
+        - containerPort: 8083
+          name: ui-port
+        volumeMounts:
+        - name: influxdb-persistent-storage
+          mountPath: /var/lib/influxdb
+      volumes:
+      - name: influxdb-persistent-storage
+        persistentVolumeClaim:
+          claimName: pv-claim

@@ -1,0 +1,21 @@
+apiVersion: apps/v1beta2 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: grafana
+spec:
+  selector:
+    matchLabels:
+      app: grafana-app
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: grafana-app
+    spec:
+      containers:
+      - image: grafana/grafana
+        name: grafana-container
+        ports:
+        - containerPort: 3000
+          name: ui-port
