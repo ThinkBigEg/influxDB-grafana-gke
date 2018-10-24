@@ -10,6 +10,7 @@ In this tutorial we explain how to get real time analytics of energy produced an
  ### ![image](/screenshots/cluster_button.png)
 - Choose your first cluster option
 - Modify the number of nodes to 2 and the machine type to 1 vCPU
+ ### ![image]("/screenshots/create cluster.png")
 - Click create
 - Wait few minutes until your cluster is up and running 
 
