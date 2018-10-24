@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: grafana-external-service
+spec:
+  selector:
+    app: grafana-app
+  ports:
+  - port: 3000
+    protocol: TCP
+    name: ui-port
+  type: LoadBalancer
