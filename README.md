@@ -4,12 +4,13 @@ In this tutorial we explain how to get real time analytics of energy produced an
 ## Prerequisites
 - Google Cloud Project linked to a billing account
 - Python
-
 ### 1. Create a kubernetes cluster on GCP
 - From the side menu choose Kubernetes Engine --> clusters
 - Click on Create Cluster button
+ ### ![image](/screenshots/cluster_button.png)
 - Choose your first cluster option
 - Modify the number of nodes to 2 and the machine type to 1 vCPU
+ ### ![image]("/screenshots/create cluster.png")
 - Click create
 - Wait few minutes until your cluster is up and running 
 
