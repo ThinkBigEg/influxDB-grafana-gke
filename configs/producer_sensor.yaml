@@ -1,0 +1,15 @@
+apiVersion: apps/v1beta2 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: producer_sensor
+spec:
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: producer_app
+    spec:
+      containers:
+      - image: library/python:3-alpine
+        name: producer-container
